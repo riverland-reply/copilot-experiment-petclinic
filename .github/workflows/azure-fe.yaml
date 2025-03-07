@@ -12,21 +12,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to Azure Container Registry (ACR)
-        uses: azure/docker-login@v1
+      - uses: azure/docker-login@v2
         with:
           login-server: petcliniccr.azurecr.io
           username: 'petcliniccr'
           password: 'xhjVwqqZPz1gXKRmmhpdeaXD34WdYOgRBj/3z4kNdQ+ACRD3TqjH'
 
-      - name: Build and Push Docker Image
+      - name: Build and push Docker image
+        shell: bash
         working-directory: demo-spring-petclinic-angular
         run: |
-          docker build -t petcliniccr.azurecr.io/frontend:${{ github.sha }} .
-          docker push petcliniccr.azurecr.io/frontend:${{ github.sha }}
-
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: petclinic-fe
-          images: petcliniccr.azurecr.io/frontend:${{ github.sha }}
+          docker build -t petcliniccr.azurecr.io/frontend:latest .
+          docker push petcliniccr.azurecr.io/frontend:latest
