@@ -1,0 +1,41 @@
+name: Azure Deploy BE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: "BE: Build and Push Docker Image"
+    outputs:
+      IMAGE_VERSION: latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Move to correct folder
+        shell: bash
+        run: cd demo-spring-petclinic-java
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: 17
+
+      - name: Build with Maven
+        shell: bash
+        run: mvn package -DskipTests
+
+      - uses: azure/docker-login@v2
+        with:
+          login-server: petcliniccr.azurecr.io
+          username: 'petcliniccr'
+          password: 'xhjVwqqZPz1gXKRmmhpdeaXD34WdYOgRBj/3z4kNdQ+ACRD3TqjH'
+
+      - name: Build and push Docker image
+        shell: bash
+        run: |
+          docker build -t petcliniccr.azurecr.io/backend:${{ env.VERSION }} .
+          docker push petcliniccr.azurecr.io/backend:${{ env.VERSION }}

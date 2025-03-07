@@ -1,30 +1,41 @@
-name: Main Workflow
+name: Azure Deploy FE
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Deployment environment (prod or non-prod)'
-        required: true
-        default: 'non-prod'
-        type: choice
-        options:
-          - prod
-          - non-prod
-  push:
-    branches:
-      - main
-  pull_request:
-    types:
-      - closed
-    branches:
-      - main
 
 jobs:
-  build-and-deploy:
-    name: Build, Push, and Deploy with Argo
-    uses: Neurons-Code/neurons-github-actions/.github/workflows/docker-build-push-apply.yml@main
-    secrets: inherit
-    with:
-      environment: ${{ inputs.environment }}
-      image_name: petclinic/frontend
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: "FE: Build and Push Docker Image"
+    outputs:
+      IMAGE_VERSION: latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Move to correct folder
+        shell: bash
+        run: cd demo-spring-petclinic-angular
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: 17
+
+      - name: Build with Maven
+        shell: bash
+        run: mvn package -DskipTests
+
+      - uses: azure/docker-login@v2
+        with:
+          login-server: petcliniccr.azurecr.io
+          username: 'petcliniccr'
+          password: 'xhjVwqqZPz1gXKRmmhpdeaXD34WdYOgRBj/3z4kNdQ+ACRD3TqjH'
+
+      - name: Build and push Docker image
+        shell: bash
+        run: |
+          docker build -t petcliniccr.azurecr.io/frontend:${{ env.VERSION }} .
+          docker push petcliniccr.azurecr.io/frontend:${{ env.VERSION }}
