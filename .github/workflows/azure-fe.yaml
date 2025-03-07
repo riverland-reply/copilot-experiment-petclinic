@@ -1,0 +1,30 @@
+name: Main Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment (prod or non-prod)'
+        required: true
+        default: 'non-prod'
+        type: choice
+        options:
+          - prod
+          - non-prod
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build, Push, and Deploy with Argo
+    uses: Neurons-Code/neurons-github-actions/.github/workflows/docker-build-push-apply.yml@main
+    secrets: inherit
+    with:
+      environment: ${{ inputs.environment }}
+      image_name: petclinic/frontend
