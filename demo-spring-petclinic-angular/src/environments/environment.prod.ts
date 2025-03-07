@@ -22,5 +22,5 @@
 
 export const environment = {
   production: true,
-  REST_API_URL: 'https://demo-adeptic.reply.com/petclinic/api/'
+  REST_API_URL: 'https://petclinic-be.azurewebsites.net/api/'
 };
