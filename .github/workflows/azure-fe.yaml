@@ -14,20 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Move to correct folder
-        shell: bash
-        run: cd demo-spring-petclinic-angular
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: 17
-
-      - name: Build with Maven
-        shell: bash
-        run: mvn package -DskipTests
-
       - uses: azure/docker-login@v2
         with:
           login-server: petcliniccr.azurecr.io
@@ -36,6 +22,7 @@ jobs:
 
       - name: Build and push Docker image
         shell: bash
+        working-directory: demo-spring-petclinic-angular
         run: |
           docker build -t petcliniccr.azurecr.io/frontend:${{ env.VERSION }} .
           docker push petcliniccr.azurecr.io/frontend:${{ env.VERSION }}
