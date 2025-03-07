@@ -22,8 +22,8 @@ jobs:
       - name: Build and Push Docker Image
         working-directory: demo-spring-petclinic-angular
         run: |
-          docker build -t myacr.azurecr.io/frontend:${{ github.sha }} .
-          docker push myacr.azurecr.io/frontend:${{ github.sha }}
+          docker build -t petcliniccr.azurecr.io/frontend:${{ github.sha }} .
+          docker push petcliniccr.azurecr.io/frontend:${{ github.sha }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
