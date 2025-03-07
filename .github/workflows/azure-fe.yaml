@@ -22,5 +22,6 @@ jobs:
         shell: bash
         working-directory: demo-spring-petclinic-angular
         run: |
-          docker build -t petcliniccr.azurecr.io/frontend:latest .
-          docker push petcliniccr.azurecr.io/frontend:latest
+          docker build -t petcliniccr.azurecr.io/frontend:${{ github.sha }} .
+          docker push petcliniccr.azurecr.io/frontend:${{ github.sha }}
+

@@ -33,5 +33,5 @@ jobs:
         working-directory: demo-spring-petclinic-java
         shell: bash
         run: |
-          docker build -t petcliniccr.azurecr.io/backend:latest .
-          docker push petcliniccr.azurecr.io/backend:latest
+          docker build -t petcliniccr.azurecr.io/backend:${{ github.sha }} .
+          docker push petcliniccr.azurecr.io/backend:${{ github.sha }}
