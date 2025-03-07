@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     name: "BE: Build and Push Docker Image"
-    outputs:
-      IMAGE_VERSION: latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,5 +33,5 @@ jobs:
         working-directory: demo-spring-petclinic-java
         shell: bash
         run: |
-          docker build -t petcliniccr.azurecr.io/backend:${{ env.VERSION }} .
-          docker push petcliniccr.azurecr.io/backend:${{ env.VERSION }}
+          docker build -t petcliniccr.azurecr.io/backend:latest .
+          docker push petcliniccr.azurecr.io/backend:latest
