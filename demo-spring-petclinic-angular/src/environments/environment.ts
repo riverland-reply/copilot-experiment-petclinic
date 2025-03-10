@@ -23,6 +23,6 @@
 
 export const environment = {
   production: true,
-  REST_API_URL: 'https://petclinic-be.azurewebsites.net/petclinic/api/'
+  REST_API_URL: 'https://petclinic-be-333188954562.europe-north1.run.app/petclinic/api/'
 };
 
