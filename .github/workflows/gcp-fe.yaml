@@ -15,17 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: 17
-
-      - name: Build with Maven
-        shell: bash
-        working-directory: demo-spring-petclinic-java
-        run: mvn package -DskipTests
-
       - name: Authenticate with GCP
         uses: google-github-actions/auth@v2
         with:
@@ -35,7 +24,7 @@ jobs:
         run: gcloud auth configure-docker europe-north1-docker.pkg.dev
 
       - name: Build and push Docker image to GCR
-        working-directory: demo-spring-petclinic-java
+        working-directory: demo-spring-petclinic-angular
         shell: bash
         run: |
           IMAGE_NAME=${{ env.REGISTRY }}/petclinic-fe
