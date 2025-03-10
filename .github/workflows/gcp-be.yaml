@@ -38,7 +38,7 @@ jobs:
         working-directory: demo-spring-petclinic-java
         shell: bash
         run: |
-          IMAGE_NAME=${env.REGISTRY}/petclinic-be
+          IMAGE_NAME=${{ env.REGISTRY }}/petclinic-be
           docker build -t $IMAGE_NAME:${{ github.sha }} .
           docker push $IMAGE_NAME:${{ github.sha }}
 
