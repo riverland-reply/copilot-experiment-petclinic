@@ -47,5 +47,4 @@ jobs:
           gcloud run deploy petclinic-be \
             --image=${{env.REGISTRY}}/petclinic-be:latest \
             --platform=managed \
-            --region=europe-north1 \
-            --allow-unauthenticated
+            --region=europe-north1

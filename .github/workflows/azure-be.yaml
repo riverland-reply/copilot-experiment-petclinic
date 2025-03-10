@@ -27,11 +27,11 @@ jobs:
         with:
           login-server: petcliniccr.azurecr.io
           username: 'petcliniccr'
-          password: 'xhjVwqqZPz1gXKRmmhpdeaXD34WdYOgRBj/3z4kNdQ+ACRD3TqjH'
+          password: 'vtPkfbiuwXulUNz4N6nn6lfoQ4hXNqDkP9unM/eCIl+ACRAG3Xr5'
 
       - name: Build and push Docker image
         working-directory: demo-spring-petclinic-java
         shell: bash
         run: |
-          docker build -t petcliniccr.azurecr.io/backend:${{ github.sha }} .
-          docker push petcliniccr.azurecr.io/backend:${{ github.sha }}
+          docker build -t petcliniccr.azurecr.io/backend:latest .
+          docker push petcliniccr.azurecr.io/backend:latest
