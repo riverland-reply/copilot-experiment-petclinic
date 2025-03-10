@@ -1,4 +1,4 @@
-name: GCP Deploy BE
+name: GCP Deploy FE
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    name: "BE: Build and Push Docker Image"
+    name: "FE: Build and Push Docker Image"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,14 +38,14 @@ jobs:
         working-directory: demo-spring-petclinic-java
         shell: bash
         run: |
-          IMAGE_NAME=${{ env.REGISTRY }}/petclinic-be
+          IMAGE_NAME=${{ env.REGISTRY }}/petclinic-fe
           docker build -t $IMAGE_NAME:latest .
           docker push $IMAGE_NAME:latest
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy petclinic-be \
-            --image=${{env.REGISTRY}}/petclinic-be:latest \
+          gcloud run deploy petclinic-fe \
+            --image=${{env.REGISTRY}}/petclinic-fe:latest \
             --platform=managed \
             --region=europe-north1 \
             --allow-unauthenticated
