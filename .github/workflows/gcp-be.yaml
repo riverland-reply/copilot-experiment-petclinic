@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: optima/agile-buddy
+  REGISTRY: europe-north1-docker.pkg.dev/optimum-agent-453312-a2/petclinic-cr
 
 jobs:
   build-and-push:
