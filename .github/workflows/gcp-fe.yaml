@@ -8,4 +8,4 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
     - name: Build docker images
-      run: docker build -t local < .bu3-q1-2025-petclinic/demo-spring-petclinic-angular//Dockerfile
+      run: docker build -t local < .bu3-q1-2025-petclinic/demo-spring-petclinic-angular/Dockerfile
