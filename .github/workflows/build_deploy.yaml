@@ -18,6 +18,6 @@ jobs:
     - name: Build docker images    
       run: docker build . -t angular:${{ github.event.inputs.version }}
     - name: Tag docker images    
-      run: docker tag angular:${{ github.event.inputs.version }} europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/angular:${{ github.event.inputs.version }} 
+      run: docker tag angular:${{ github.event.inputs.version }} europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-fe/angular:${{ github.event.inputs.version }} 
     - name: Push docker images    
-      run: docker push europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/angular:${{ github.event.inputs.version }} 
+      run: docker push europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-fe/angular:${{ github.event.inputs.version }} 
