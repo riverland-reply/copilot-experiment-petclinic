@@ -21,4 +21,8 @@ COPY target/spring-petclinic-rest-3.4.2.jar /app/app.jar
 
 EXPOSE 8080
 
+ENV POSTGRES_URL=optimum-agent-453312-a2:europe-west10:petclinic-official-database
+ENV POSTGRES_USER=chipmunk
+ENV POSTGRES_PASS=changeme
+
 CMD java -Xmx6144m -Dserver.port=8080 -jar app.jar

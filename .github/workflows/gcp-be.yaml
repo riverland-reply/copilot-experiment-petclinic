@@ -1,6 +1,6 @@
 name: GCP Deploy BE
-on: 
-  workflow_dispatch:    
+on:
+  workflow_dispatch:
     inputs:
       version:
         options:
@@ -13,11 +13,19 @@ jobs:
       run:
         working-directory: ./demo-spring-petclinic-java/
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
-    - name: Build docker images    
-      run: docker build . -t angular:${{ github.event.inputs.version }}
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    
+    - name: Build docker java
+      run: docker build . -t java:${{ github.event.inputs.version }}
     - name: Tag docker images    
-      run: docker tag angular:${{ github.event.inputs.version }} europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/angular:${{ github.event.inputs.version }} 
+      run: docker tag java:${{ github.event.inputs.version }} europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/java:${{ github.event.inputs.version }} 
     - name: Push docker images    
-      run: docker push europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/angular:${{ github.event.inputs.version }} 
+      run: docker push europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-be/java:${{ github.event.inputs.version }} 
