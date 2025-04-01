@@ -21,7 +21,7 @@ COPY target/spring-petclinic-rest-3.4.2.jar /app/app.jar
 
 EXPOSE 8080
 
-ENV POSTGRES_URL=jdbc:postgresql:34.32.14.171/postgres
+ENV POSTGRES_URL=jdbc:postgresql://34.32.14.171/postgres
 ENV POSTGRES_USER=chipmunk
 ENV POSTGRES_PASS=changeme
 
