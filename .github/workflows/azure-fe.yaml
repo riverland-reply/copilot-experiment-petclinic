@@ -1,1 +1,31 @@
 name: Azure Deploy FE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'team-azure'
+jobs:
+  build:
+    name: 'Build and Push to ACR'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: "demo-spring-petclinic-angular"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker Login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.AZURE_URL }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - run: |
+          docker build . -t ${{ secrets.AZURE_URL }}/${{ vars.PET_CLINIC_IMAGE_FE }}:${{ github.sha }}
+          docker push ${{ secrets.AZURE_URL }}/${{ vars.PET_CLINIC_IMAGE_FE }}:${{ github.sha }}
+
