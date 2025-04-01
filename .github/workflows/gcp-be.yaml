@@ -1,1 +1,19 @@
 name: GCP Deploy BE
+on:
+  workflow_dispatch:
+jobs:
+  gcp:
+    runs-on: [atc-ubuntu-latest]
+    name: Checkout and build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
