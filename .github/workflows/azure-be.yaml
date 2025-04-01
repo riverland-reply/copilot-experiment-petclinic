@@ -13,6 +13,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: "demo-spring-petclinic-java"
 
     steps:
       - name: Checkout
@@ -25,6 +26,7 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - run: |
-          docker build demo-spring-petclinic-java -t ${{ secrets.AZURE_URL }}/${{ vars.PET_CLINIC_IMAGE_BE }}:${{ github.sha }}
+          mvn install
+          docker build . -t ${{ secrets.AZURE_URL }}/${{ vars.PET_CLINIC_IMAGE_BE }}:${{ github.sha }}
           docker push ${{ secrets.AZURE_URL }}/${{ vars.PET_CLINIC_IMAGE_BE }}:${{ github.sha }}
 
