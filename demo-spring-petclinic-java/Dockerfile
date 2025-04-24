@@ -19,6 +19,6 @@ WORKDIR /app
 
 COPY target/spring-petclinic-rest-3.4.2.jar /app/app.jar
 
-EXPOSE 8080
+EXPOSE 8081
 
-CMD java -Xmx6144m -Dserver.port=8080 -jar app.jar
+CMD java -Xmx6144m -Dserver.port=8081 -jar app.jar
