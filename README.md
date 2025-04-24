@@ -12,5 +12,6 @@ docker compose --profile postgres up --build
 
 access the DB from: localhost:5433
 
+mvn spring-boot:run
 
 the apis will be exposed from: http://localhost:8081/petclinic/api
