@@ -46,6 +46,8 @@ public class PetRestController implements PetsApi {
 
     private final PetMapper petMapper;
 
+    private final String paride = "";
+
     public PetRestController(ClinicService clinicService, PetMapper petMapper) {
         this.clinicService = clinicService;
         this.petMapper = petMapper;
