@@ -24,10 +24,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
 import {WelcomeComponent} from './parts/welcome/welcome.component';
+import {AppointmentListComponent} from './appointments/appointment-list/appointment-list.component';
+import {AppointmentFormComponent} from './appointments/appointment-form/appointment-form.component';
 
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: '', component: WelcomeComponent},
+  {path: 'appointments', component: AppointmentListComponent},
+  {path: 'appointments/new', component: AppointmentFormComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

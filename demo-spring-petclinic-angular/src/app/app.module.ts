@@ -22,7 +22,7 @@
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -35,15 +35,19 @@ import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {AppointmentListComponent} from './appointments/appointment-list/appointment-list.component';
+import {AppointmentFormComponent} from './appointments/appointment-form/appointment-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppointmentListComponent,
+    AppointmentFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     OwnersModule,
     PetsModule,

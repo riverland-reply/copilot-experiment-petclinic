@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
 
 @Schema(name = "User", description = "An user.")
 @JsonTypeName("User")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-09T15:27:51.066808400+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-09T16:29:05.556488800+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
 public class UserDto {
 
   private String username;
