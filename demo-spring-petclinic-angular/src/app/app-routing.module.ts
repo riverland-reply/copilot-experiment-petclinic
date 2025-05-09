@@ -25,7 +25,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
 import {WelcomeComponent} from './parts/welcome/welcome.component';
 
+import { AppointmentListComponent } from './appointments/appointment-list.component';
+
 const appRoutes: Routes = [
+  {path: 'appointments', component: AppointmentListComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: '', component: WelcomeComponent},
   {path: '**', component: PageNotFoundComponent}

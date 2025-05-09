@@ -15,7 +15,6 @@ RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                     
 
 FROM $DOCKER_HUB/library/nginx:$NGINX_VERSION AS runtime
 
-
 COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
 
 RUN chmod a+rwx /var/cache/nginx /var/run /var/log/nginx                        && \

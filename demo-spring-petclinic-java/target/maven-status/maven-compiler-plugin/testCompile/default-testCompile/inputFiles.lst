@@ -1,18 +1,20 @@
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\model\ValidatorTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\OwnerRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\PetRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\PetTypeRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\SpecialtyRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\UserRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\VetRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\VisitRestControllerTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\AbstractClinicServiceTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ApplicationTestConfig.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceJdbcTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceJpaTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceSpringDataJpaTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\AbstractUserServiceTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceJdbcTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceJpaTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceSpringDataJpaTests.java
-C:\Users\d.gualandris\OneDrive - Reply\Desktop\Altro\Riverland Reply\Hackatons\2025_Q1\petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\SpringConfigTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\model\AppointmentJsonTest.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\model\ValidatorTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\AppointmentRestControllerTest.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\OwnerRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\PetRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\PetTypeRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\SpecialtyRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\UserRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\VetRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\rest\controller\VisitRestControllerTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\AbstractClinicServiceTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ApplicationTestConfig.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceJdbcTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceJpaTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\clinicService\ClinicServiceSpringDataJpaTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\AbstractUserServiceTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceJdbcTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceJpaTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\service\userService\UserServiceSpringDataJpaTests.java
+C:\Project\Riverland\copilot-experiment-petclinic\demo-spring-petclinic-java\src\test\java\org\springframework\samples\petclinic\SpringConfigTests.java

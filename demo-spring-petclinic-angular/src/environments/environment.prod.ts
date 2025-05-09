@@ -22,5 +22,5 @@
 
 export const environment = {
   production: true,
-  REST_API_URL: 'http://localhost:8081/petclinic/api/'
+  REST_API_URL: 'http://host.docker.internal:8081/petclinic/api/'
 };

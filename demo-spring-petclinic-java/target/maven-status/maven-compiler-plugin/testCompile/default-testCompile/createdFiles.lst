@@ -1,5 +1,6 @@
 org\springframework\samples\petclinic\rest\controller\VisitRestControllerTests.class
 org\springframework\samples\petclinic\service\userService\UserServiceJpaTests.class
+org\springframework\samples\petclinic\rest\controller\AppointmentRestControllerTest.class
 org\springframework\samples\petclinic\rest\controller\SpecialtyRestControllerTests.class
 org\springframework\samples\petclinic\rest\controller\OwnerRestControllerTests.class
 org\springframework\samples\petclinic\service\userService\UserServiceJdbcTests.class

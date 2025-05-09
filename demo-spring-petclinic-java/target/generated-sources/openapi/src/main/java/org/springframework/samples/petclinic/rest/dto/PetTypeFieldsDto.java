@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
 
 @Schema(name = "PetTypeFields", description = "Editable fields of a pet type.")
 @JsonTypeName("PetTypeFields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-24T17:58:24.312635900+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-09T16:44:36.804758700+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
 public class PetTypeFieldsDto {
 
   private String name;

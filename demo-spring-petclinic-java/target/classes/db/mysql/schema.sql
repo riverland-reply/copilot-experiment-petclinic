@@ -70,3 +70,17 @@ CREATE TABLE IF NOT EXISTS roles (
   KEY fk_username_idx (username),
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username)
 ) engine=InnoDB;
+
+-- New Appointment table
+CREATE TABLE IF NOT EXISTS appointments (
+    id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    reason VARCHAR(255),
+    pet_id INT(4) UNSIGNED NOT NULL,
+    vet_id INT(4) UNSIGNED NOT NULL,
+    FOREIGN KEY (pet_id) REFERENCES pets(id),
+    FOREIGN KEY (vet_id) REFERENCES vets(id),
+    INDEX idx_appointments_pet_id (pet_id),
+    INDEX idx_appointments_vet_id (vet_id)
+) engine=InnoDB;

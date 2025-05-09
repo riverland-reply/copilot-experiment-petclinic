@@ -1,0 +1,359 @@
+-------------------------------------------------------------------------------
+Test set: org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests
+-------------------------------------------------------------------------------
+Tests run: 34, Failures: 2, Errors: 27, Skipped: 0, Time elapsed: 6.294 s <<< FAILURE! -- in org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindAllOwners -- Time elapsed: 0.051 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.Owner] with identifier [1]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindAllOwners(AbstractClinicServiceTests.java:339)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindPetTypeById -- Time elapsed: 0.032 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.PetType.getName()" because "petType" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindPetTypeById(AbstractClinicServiceTests.java:361)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdateSpecialty -- Time elapsed: 0.030 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Specialty.getName()" because "specialty" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdateSpecialty(AbstractClinicServiceTests.java:450)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindVets -- Time elapsed: 0.014 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.Vet] with identifier [3]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindVets(AbstractClinicServiceTests.java:170)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindAllVisits -- Time elapsed: 0.014 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.Visit] with identifier [1]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindAllVisits(AbstractClinicServiceTests.java:235)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindOwnersByLastName -- Time elapsed: 0.040 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 2
+ but was: 0
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindOwnersByLastName(AbstractClinicServiceTests.java:62)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldDeletePet -- Time elapsed: 0.018 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Pet.getId()" because "pet" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcPetRepositoryImpl.delete(JdbcPetRepositoryImpl.java:158)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcPetRepositoryImpl$$SpringCGLIB$$0.delete(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.deletePet(ClinicServiceImpl.java:74)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.deletePet(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldDeletePet(AbstractClinicServiceTests.java:216)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldDeleteVet -- Time elapsed: 0.012 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Vet.getId()" because "vet" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVetRepositoryImpl.delete(JdbcVetRepositoryImpl.java:157)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVetRepositoryImpl$$SpringCGLIB$$0.delete(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.deleteVet(ClinicServiceImpl.java:116)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.deleteVet(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldDeleteVet(AbstractClinicServiceTests.java:327)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldDeleteOwner -- Time elapsed: 0.008 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Owner.getId()" because "owner" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcOwnerRepositoryImpl.delete(JdbcOwnerRepositoryImpl.java:177)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcOwnerRepositoryImpl$$SpringCGLIB$$0.delete(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.deleteOwner(ClinicServiceImpl.java:128)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.deleteOwner(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldDeleteOwner(AbstractClinicServiceTests.java:349)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldDeleteVisit -- Time elapsed: 0.012 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Visit.getId()" because "visit" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl.delete(JdbcVisitRepositoryImpl.java:138)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl$$SpringCGLIB$$0.delete(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.deleteVisit(ClinicServiceImpl.java:92)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.deleteVisit(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldDeleteVisit(AbstractClinicServiceTests.java:278)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldAddNewVisitForPet -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Pet.getVisits()" because "pet7" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldAddNewVisitForPet(AbstractClinicServiceTests.java:181)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdateOwner -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Owner.getLastName()" because "owner" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdateOwner(AbstractClinicServiceTests.java:100)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindVisitsByPetId -- Time elapsed: 0.018 s <<< ERROR!
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:194)
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.queryForObject(NamedParameterJdbcTemplate.java:253)
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.queryForObject(NamedParameterJdbcTemplate.java:261)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl.findByPetId(JdbcVisitRepositoryImpl.java:83)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl$$SpringCGLIB$$0.findByPetId(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.findVisitsByPetId(ClinicServiceImpl.java:233)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.findVisitsByPetId(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindVisitsByPetId(AbstractClinicServiceTests.java:195)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdateVisit -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Visit.getDescription()" because "visit" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdateVisit(AbstractClinicServiceTests.java:266)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldInsertPetIntoDatabaseAndGenerateId -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Owner.getPets()" because "owner6" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldInsertPetIntoDatabaseAndGenerateId(AbstractClinicServiceTests.java:133)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldInsertVisit -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Pet.getId()" because the return value of "org.springframework.samples.petclinic.model.Visit.getPet()" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl.createVisitParameterSource(JdbcVisitRepositoryImpl.java:76)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl.save(JdbcVisitRepositoryImpl.java:126)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcVisitRepositoryImpl$$SpringCGLIB$$0.save(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.saveVisit(ClinicServiceImpl.java:207)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.saveVisit(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldInsertVisit(AbstractClinicServiceTests.java:255)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindAllPets -- Time elapsed: 0.012 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.Pet] with identifier [1]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindAllPets(AbstractClinicServiceTests.java:206)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindSingleOwnerWithPet -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Owner.getLastName()" because "owner" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindSingleOwnerWithPet(AbstractClinicServiceTests.java:71)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindAllSpecialtys -- Time elapsed: 0.008 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.Specialty] with identifier [1]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindAllSpecialtys(AbstractClinicServiceTests.java:424)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdatePetName -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Pet.getName()" because "pet7" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdatePetName(AbstractClinicServiceTests.java:156)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdatePetType -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.PetType.getName()" because "petType" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdatePetType(AbstractClinicServiceTests.java:393)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindVisitDyId -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Visit.getId()" because "visit" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindVisitDyId(AbstractClinicServiceTests.java:228)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindAllPetTypes -- Time elapsed: 0.008 s <<< ERROR!
+org.springframework.orm.ObjectRetrievalFailureException: Object of class [org.springframework.samples.petclinic.model.PetType] with identifier [1]: not found
+	at org.springframework.samples.petclinic.util.EntityUtils.getById(EntityUtils.java:51)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindAllPetTypes(AbstractClinicServiceTests.java:367)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldUpdateVet -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Vet.getLastName()" because "vet" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldUpdateVet(AbstractClinicServiceTests.java:315)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindSpecialtiesByNameIn -- Time elapsed: 0.036 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+
+expected: 3
+ but was: 0
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindSpecialtiesByNameIn(AbstractClinicServiceTests.java:495)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindVetDyId -- Time elapsed: 0.008 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Vet.getFirstName()" because "vet" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindVetDyId(AbstractClinicServiceTests.java:290)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldDeletePetType -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.PetType.getId()" because "petType" is null
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcPetTypeRepositoryImpl.delete(JdbcPetTypeRepositoryImpl.java:119)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.repository.jdbc.JdbcPetTypeRepositoryImpl$$SpringCGLIB$$0.delete(<generated>)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl.deletePetType(ClinicServiceImpl.java:152)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727)
+	at org.springframework.samples.petclinic.service.ClinicServiceImpl$$SpringCGLIB$$0.deletePetType(<generated>)
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldDeletePetType(AbstractClinicServiceTests.java:405)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindPetWithCorrectId -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Pet.getName()" because "pet7" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindPetWithCorrectId(AbstractClinicServiceTests.java:114)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.springframework.samples.petclinic.service.clinicService.ClinicServiceJdbcTests.shouldFindSpecialtyById -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.samples.petclinic.model.Specialty.getName()" because "specialty" is null
+	at org.springframework.samples.petclinic.service.clinicService.AbstractClinicServiceTests.shouldFindSpecialtyById(AbstractClinicServiceTests.java:418)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
