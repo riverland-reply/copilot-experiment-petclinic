@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import org.springframework.samples.petclinic.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +47,7 @@ public class ClinicServiceImpl implements ClinicService {
     private final VisitRepository visitRepository;
     private final SpecialtyRepository specialtyRepository;
     private final PetTypeRepository petTypeRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Autowired
     public ClinicServiceImpl(
@@ -53,13 +56,15 @@ public class ClinicServiceImpl implements ClinicService {
         OwnerRepository ownerRepository,
         VisitRepository visitRepository,
         SpecialtyRepository specialtyRepository,
-        PetTypeRepository petTypeRepository) {
+        PetTypeRepository petTypeRepository,
+        AppointmentRepository appointmentRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.petTypeRepository = petTypeRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     @Override
@@ -205,7 +210,6 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional
     public void saveVisit(Visit visit) throws DataAccessException {
         visitRepository.save(visit);
-
     }
 
     @Override
@@ -218,7 +222,6 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional
     public void saveOwner(Owner owner) throws DataAccessException {
         ownerRepository.save(owner);
-
     }
 
     @Override
@@ -239,6 +242,81 @@ public class ClinicServiceImpl implements ClinicService {
         return findEntityById(() -> specialtyRepository.findSpecialtiesByNameIn(names));
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Appointment findAppointmentById(int id) throws DataAccessException {
+        return findEntityById(() -> appointmentRepository.findById(id));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAllAppointments() throws DataAccessException {
+        return appointmentRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.delete(appointment);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAppointmentsByPetId(int petId) {
+        return appointmentRepository.findByPetId(petId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAppointmentsByVetId(int vetId) {
+        return appointmentRepository.findByVetId(vetId);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAllUpcomingAppointments() throws DataAccessException {
+        return appointmentRepository.findAllUpcoming();
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public boolean isVetAvailable(int vetId, LocalDate date, LocalTime startTime, Integer excludeAppointmentId) throws DataAccessException {
+        // Calculate end time (15 minutes after start time)
+        LocalTime endTime = startTime.plusMinutes(15);
+        
+        // Check for overlapping appointments
+        List<Appointment> overlappingAppointments = appointmentRepository.findOverlappingAppointments(
+            vetId, date, startTime, endTime, excludeAppointmentId);
+        
+        // If there are no overlapping appointments, the vet is available
+        return overlappingAppointments.isEmpty();
+    }
+    
+    @Override
+    @Transactional
+    public void saveAppointmentWithAvailabilityCheck(Appointment appointment) throws DataAccessException {
+        // Check if the vet is available at the specified date and time
+        Integer appointmentId = appointment.getId();
+        boolean isVetAvailable = isVetAvailable(
+            appointment.getVet().getId(), 
+            appointment.getDate(), 
+            appointment.getTime(),
+            appointmentId);
+        
+        if (!isVetAvailable) {
+            throw new DataAccessException("Vet is not available at the specified date and time") {};
+        }
+        
+        // If the vet is available, save the appointment
+        appointmentRepository.save(appointment);
+    }
+
     private <T> T findEntityById(Supplier<T> supplier) {
         try {
             return supplier.get();
@@ -247,5 +325,4 @@ public class ClinicServiceImpl implements ClinicService {
             return null;
         }
     }
-
 }
