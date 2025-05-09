@@ -72,7 +72,9 @@ CREATE TABLE IF NOT EXISTS appointments (
     appointment_time TIME NOT NULL,
     reason TEXT NOT NULL,
     pet_id INT REFERENCES pets (id),
-    vet_id INT REFERENCES vets (id)
+    vet_id INT REFERENCES vets (id),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX ON appointments (appointment_date);
 CREATE INDEX ON appointments (vet_id);

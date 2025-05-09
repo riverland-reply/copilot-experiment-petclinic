@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
 
 @Schema(name = "Vet", description = "A veterinarian.")
 @JsonTypeName("Vet")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-24T17:58:24.312635900+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-09T15:27:51.066808400+02:00[Europe/Berlin]", comments = "Generator version: 7.11.0")
 public class VetDto {
 
   private String firstName;

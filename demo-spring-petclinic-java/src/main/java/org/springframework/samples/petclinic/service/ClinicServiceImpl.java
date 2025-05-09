@@ -28,6 +28,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * Mostly used as a facade for all Petclinic controllers
@@ -45,6 +47,7 @@ public class ClinicServiceImpl implements ClinicService {
     private final VisitRepository visitRepository;
     private final SpecialtyRepository specialtyRepository;
     private final PetTypeRepository petTypeRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Autowired
     public ClinicServiceImpl(
@@ -53,13 +56,15 @@ public class ClinicServiceImpl implements ClinicService {
         OwnerRepository ownerRepository,
         VisitRepository visitRepository,
         SpecialtyRepository specialtyRepository,
-        PetTypeRepository petTypeRepository) {
+        PetTypeRepository petTypeRepository,
+        AppointmentRepository appointmentRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.petTypeRepository = petTypeRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     @Override
@@ -237,6 +242,66 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional(readOnly = true)
     public List<Specialty> findSpecialtiesByNameIn(Set<String> names) {
         return findEntityById(() -> specialtyRepository.findSpecialtiesByNameIn(names));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Appointment findAppointmentById(int id) throws DataAccessException {
+        return findEntityById(() -> appointmentRepository.findById(id));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAllAppointments() throws DataAccessException {
+        return appointmentRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.delete(appointment);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAppointmentsByPetId(Integer petId) throws DataAccessException {
+        return appointmentRepository.findByPetId(petId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAppointmentsByVetId(Integer vetId) throws DataAccessException {
+        return appointmentRepository.findByVetId(vetId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAppointmentsByDate(LocalDate date) throws DataAccessException {
+        return appointmentRepository.findByDate(date);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAppointmentsByVetIdAndDate(Integer vetId, LocalDate date) throws DataAccessException {
+        return appointmentRepository.findByVetIdAndDate(vetId, date);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAllUpcomingAppointments(LocalDate today) throws DataAccessException {
+        return appointmentRepository.findAllUpcomingAppointments(today);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findOverlappingAppointments(Integer vetId, LocalDate date, LocalTime time) throws DataAccessException {
+        return appointmentRepository.findOverlappingAppointments(vetId, date, time);
     }
 
     private <T> T findEntityById(Supplier<T> supplier) {
