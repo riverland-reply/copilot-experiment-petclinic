@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Use standard Spring REST conventions and proper request/response models.
+
