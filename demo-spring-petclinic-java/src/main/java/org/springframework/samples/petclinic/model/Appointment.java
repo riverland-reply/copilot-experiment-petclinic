@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2013 the original author or authors.
+ * Copyright 2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,14 @@ package org.springframework.samples.petclinic.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
@@ -35,25 +38,47 @@ public class Appointment extends BaseEntity {
 
     @Column(name = "appointment_date", columnDefinition = "DATE")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "Date is required")
+    @Future(message = "Date must be in the future")
     private LocalDate date;
 
     @Column(name = "appointment_time")
     @DateTimeFormat(pattern = "HH:mm")
+    @NotNull(message = "Time is required")
     private LocalTime time;
 
-    @NotEmpty
+    @NotEmpty(message = "Reason is required")
     @Column(name = "reason")
     private String reason;
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
+    @NotNull(message = "Pet is required")
     @JsonIgnoreProperties({"owner", "visits"})
     private Pet pet;
 
     @ManyToOne
     @JoinColumn(name = "vet_id")
+    @NotNull(message = "Vet is required")
     @JsonIgnoreProperties({"specialties"})
     private Vet vet;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
     public LocalDate getDate() {
         return this.date;
@@ -93,5 +118,13 @@ public class Appointment extends BaseEntity {
 
     public void setVet(Vet vet) {
         this.vet = vet;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 } 

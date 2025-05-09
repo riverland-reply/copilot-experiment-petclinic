@@ -35,7 +35,7 @@ public class AppointmentService {
 
         // Check for overlapping appointments
         List<Appointment> overlappingAppointments = appointmentRepository.findOverlappingAppointments(
-            appointment.getVet(),
+            appointment.getVet().getId(),
             appointment.getDate(),
             appointment.getTime()
         );

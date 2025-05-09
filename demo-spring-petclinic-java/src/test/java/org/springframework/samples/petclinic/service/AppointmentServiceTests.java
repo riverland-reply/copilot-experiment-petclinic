@@ -72,7 +72,7 @@ class AppointmentServiceTests {
     void shouldSaveAppointmentWhenNoOverlap() {
         // given
         when(appointmentRepository.findOverlappingAppointments(
-            appointment.getVet(),
+            appointment.getVet().getId(),
             appointment.getDate(),
             appointment.getTime()
         )).thenReturn(new ArrayList<>());
@@ -92,7 +92,7 @@ class AppointmentServiceTests {
         List<Appointment> overlappingAppointments = new ArrayList<>();
         overlappingAppointments.add(new Appointment());
         when(appointmentRepository.findOverlappingAppointments(
-            appointment.getVet(),
+            appointment.getVet().getId(),
             appointment.getDate(),
             appointment.getTime()
         )).thenReturn(overlappingAppointments);
