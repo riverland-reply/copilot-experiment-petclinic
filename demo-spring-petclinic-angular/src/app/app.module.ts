@@ -22,6 +22,7 @@
 
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {AppointmentsModule} from './appointments/appointments.module';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
@@ -53,7 +54,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SpecialtiesModule,
     PartsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppointmentsModule
   ],
   providers: [
     HttpErrorHandler,

@@ -1,0 +1,72 @@
+
+<div class="container-fluid">
+    <div class="container xd-container">
+        <h2>Current Appointments</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Reason</th>
+                <th>Pet Name</th>
+                <th>Vet Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let appointment of appointments">
+                <td>{{appointment.appointmentDateTimeStart | date:'medium'}}</td>
+                <td>{{appointment.appointmentDateTimeEnd | date:'medium'}}</td>
+                <td>{{appointment.reason}}</td>
+                <td>{{appointment.petName}}</td>
+                <td>{{appointment.vetFirstName}} {{appointment.vetLastName}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h2>New Appointment</h2>
+        <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Start Time</label>
+                <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" formControlName="appointmentDateTimeStart">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">End Time</label>
+                <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" formControlName="appointmentDateTimeEnd">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Reason</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="reason">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pet ID</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="petId">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Vet ID</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="vetId">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary" type="submit" [disabled]="!appointmentForm.valid">Add Appointment</button>
+                </div>
+            </div>
+        </form>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+    </div>
+</div>
