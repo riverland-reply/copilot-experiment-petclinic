@@ -20,12 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.Owner;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.PetType;
-import org.springframework.samples.petclinic.model.Specialty;
-import org.springframework.samples.petclinic.model.Vet;
-import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.*;
 
 /**
  * Mostly used as a facade so all controllers have a single point of entry
@@ -67,4 +62,6 @@ public interface ClinicService {
 	void deleteSpecialty(Specialty specialty) throws DataAccessException;
 
     List<Specialty> findSpecialtiesByNameIn(Set<String> names) throws DataAccessException;
+
+	void saveAppointment(Appointment appointment)throws DataAccessException;;
 }

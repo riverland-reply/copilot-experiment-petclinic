@@ -45,6 +45,7 @@ public class ClinicServiceImpl implements ClinicService {
     private final VisitRepository visitRepository;
     private final SpecialtyRepository specialtyRepository;
     private final PetTypeRepository petTypeRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Autowired
     public ClinicServiceImpl(
@@ -53,13 +54,15 @@ public class ClinicServiceImpl implements ClinicService {
         OwnerRepository ownerRepository,
         VisitRepository visitRepository,
         SpecialtyRepository specialtyRepository,
-        PetTypeRepository petTypeRepository) {
+        PetTypeRepository petTypeRepository,
+        AppointmentRepository appointmentRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.petTypeRepository = petTypeRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     @Override
@@ -199,6 +202,12 @@ public class ClinicServiceImpl implements ClinicService {
     public void savePet(Pet pet) throws DataAccessException {
         pet.setType(findPetTypeById(pet.getType().getId()));
         petRepository.save(pet);
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.save(appointment);
     }
 
     @Override
