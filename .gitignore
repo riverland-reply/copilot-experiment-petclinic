@@ -24,3 +24,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+demo-spring-petclinic-angular/node_modules/
+demo-spring-petclinic-java/target/classes/META-INF/build-info.properties
+demo-spring-petclinic-java/target/generated-sources/openapi/.openapi-generator/FILES
+demo-spring-petclinic-java/target/
+demo-spring-petclinic-java/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst

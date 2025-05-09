@@ -52,7 +52,7 @@
         <maven.source-plugin.version>3.3.1</maven.source-plugin.version>
         <maven.spotbugs-plugin.version>4.8.6.6</maven.spotbugs-plugin.version>
         <maven.surefire-plugin.version>3.5.2</maven.surefire-plugin.version>
-        <maven.version>3.9.9</maven.version>
+        <maven.version>3.9.6</maven.version>
         <maven.versions-plugin.version>2.18.0</maven.versions-plugin.version>
 
         <!-- Docker -->
