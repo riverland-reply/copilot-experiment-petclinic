@@ -37,8 +37,8 @@ import org.springframework.stereotype.Repository;
  * @author Michael Isvy
  * @author Vitaliy Fedoriv
  */
-@Repository
 @Profile("jpa")
+@Repository
 public class JpaPetRepositoryImpl implements PetRepository {
 
     @PersistenceContext

@@ -1,0 +1,15 @@
+curl http://localhost:8081/petclinic/api/appointments -v
+
+curl -X POST \
+  http://localhost:8081/petclinic/api/appointments \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "date": "2024-12-25",
+    "time": "10:00:00",
+    "reason": "Annual checkup",
+    "pet": { "id": 1 },
+    "vet": { "id": 2 }
+}'
+
+
+mvn spring-boot:run -Dspring-boot.run.profiles=postgres
