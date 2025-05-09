@@ -80,3 +80,14 @@ CREATE TABLE roles (
 ALTER TABLE roles ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username);
 CREATE INDEX fk_username_idx ON roles (username);
 
+CREATE TABLE appointments (
+  id          INTEGER IDENTITY PRIMARY KEY,
+  appointment_datetime_start  TIMESTAMP,
+  appointment_datetime_end  TIMESTAMP,
+  reason      VARCHAR(255),
+  pet_id      INTEGER NOT NULL,
+  vet_id      INTEGER NOT NULL,
+  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  FOREIGN KEY (vet_id) REFERENCES vets(id)
+);
+

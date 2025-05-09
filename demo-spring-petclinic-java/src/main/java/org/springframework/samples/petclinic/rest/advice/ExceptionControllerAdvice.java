@@ -22,6 +22,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.rest.controller.BindingErrorsResponse;
+import org.springframework.samples.petclinic.rest.exceptions.AppointmentConflictException;
+import org.springframework.samples.petclinic.rest.exceptions.ResourceNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -111,6 +113,34 @@ public class ExceptionControllerAdvice {
             return ResponseEntity.status(status).body(detail);
         }
         return ResponseEntity.status(status).build();
+    }
+
+    /**
+     *  Handles exception thrown by ResourceNotFoundException, for example for in the insert for an appointment with not existing pet or vet
+     * @param ex
+     * @param request
+     * @return
+     */
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseBody
+    public ResponseEntity<ProblemDetail> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        ProblemDetail detail = this.detailBuild(ex, status, request.getRequestURL());
+        return ResponseEntity.status(status).body(detail);
+    }
+
+    /**
+     *  Handles an exception when there is a conflict of appointments for the same time and vet
+     * @param ex
+     * @param request
+     * @return
+     */
+    @ExceptionHandler(AppointmentConflictException.class)
+    @ResponseBody
+    public ResponseEntity<ProblemDetail> handleAppointmentConflictException(AppointmentConflictException ex, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.CONFLICT;
+        ProblemDetail detail = this.detailBuild(ex, status, request.getRequestURL());
+        return ResponseEntity.status(status).body(detail);
     }
 
 }
