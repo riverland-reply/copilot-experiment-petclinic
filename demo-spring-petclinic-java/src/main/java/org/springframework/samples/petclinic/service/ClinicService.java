@@ -15,11 +15,14 @@
  */
 package org.springframework.samples.petclinic.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Appointment;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
@@ -67,4 +70,14 @@ public interface ClinicService {
 	void deleteSpecialty(Specialty specialty) throws DataAccessException;
 
     List<Specialty> findSpecialtiesByNameIn(Set<String> names) throws DataAccessException;
+    
+    // Appointment related methods
+    Appointment findAppointmentById(int id) throws DataAccessException;
+    Collection<Appointment> findAllAppointments() throws DataAccessException;
+    Collection<Appointment> findAppointmentsByPetId(int petId) throws DataAccessException;
+    Collection<Appointment> findAppointmentsByVetId(int vetId) throws DataAccessException;
+    List<Appointment> findAppointmentsByVetAndDate(int vetId, LocalDate date) throws DataAccessException;
+    void saveAppointment(Appointment appointment) throws DataAccessException;
+    void deleteAppointment(Appointment appointment) throws DataAccessException;
+    boolean hasOverlappingAppointments(int vetId, LocalDate date, LocalTime startTime, LocalTime endTime, Integer excludeId) throws DataAccessException;
 }

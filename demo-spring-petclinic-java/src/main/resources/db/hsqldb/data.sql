@@ -52,6 +52,13 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
+-- Sample appointments
+INSERT INTO appointments VALUES (1, '2024-06-01', '10:00:00', 'Annual checkup', 1, 1);
+INSERT INTO appointments VALUES (2, '2024-06-01', '10:30:00', 'Vaccination', 2, 2);
+INSERT INTO appointments VALUES (3, '2024-06-01', '11:00:00', 'Dental cleaning', 3, 3);
+INSERT INTO appointments VALUES (4, '2024-06-02', '09:00:00', 'Surgery consultation', 4, 4);
+INSERT INTO appointments VALUES (5, '2024-06-02', '14:00:00', 'Skin condition', 5, 5);
+
 INSERT INTO users(username,password,enabled) VALUES ('admin','{noop}admin', true);
 
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_OWNER_ADMIN');

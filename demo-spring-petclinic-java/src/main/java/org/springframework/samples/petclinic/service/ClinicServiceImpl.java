@@ -24,6 +24,8 @@ import org.springframework.samples.petclinic.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +47,7 @@ public class ClinicServiceImpl implements ClinicService {
     private final VisitRepository visitRepository;
     private final SpecialtyRepository specialtyRepository;
     private final PetTypeRepository petTypeRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Autowired
     public ClinicServiceImpl(
@@ -53,13 +56,15 @@ public class ClinicServiceImpl implements ClinicService {
         OwnerRepository ownerRepository,
         VisitRepository visitRepository,
         SpecialtyRepository specialtyRepository,
-        PetTypeRepository petTypeRepository) {
+        PetTypeRepository petTypeRepository,
+        AppointmentRepository appointmentRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.petTypeRepository = petTypeRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     @Override
@@ -239,6 +244,64 @@ public class ClinicServiceImpl implements ClinicService {
         return findEntityById(() -> specialtyRepository.findSpecialtiesByNameIn(names));
     }
 
+    // Appointment related methods
+    @Override
+    @Transactional(readOnly = true)
+    public Appointment findAppointmentById(int id) throws DataAccessException {
+        return findEntityById(() -> appointmentRepository.findById(id));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAllAppointments() throws DataAccessException {
+        return appointmentRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAppointmentsByPetId(int petId) throws DataAccessException {
+        return appointmentRepository.findByPetId(petId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAppointmentsByVetId(int vetId) throws DataAccessException {
+        return appointmentRepository.findByVetId(vetId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Appointment> findAppointmentsByVetAndDate(int vetId, LocalDate date) throws DataAccessException {
+        return appointmentRepository.findByVetIdAndDate(vetId, date);
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        // Check for overlapping appointments before saving
+        if (hasOverlappingAppointments(
+                appointment.getVet().getId(),
+                appointment.getDate(),
+                appointment.getTime(),
+                appointment.getEndTime(),
+                appointment.getId())) {
+            throw new DataAccessException("Cannot book appointment. The vet already has an appointment at this time.") {};
+        }
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.delete(appointment);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean hasOverlappingAppointments(int vetId, LocalDate date, LocalTime startTime, LocalTime endTime, Integer excludeId) throws DataAccessException {
+        return appointmentRepository.hasOverlappingAppointments(vetId, date, startTime, endTime, excludeId);
+    }
+
     private <T> T findEntityById(Supplier<T> supplier) {
         try {
             return supplier.get();
@@ -247,5 +310,4 @@ public class ClinicServiceImpl implements ClinicService {
             return null;
         }
     }
-
 }
