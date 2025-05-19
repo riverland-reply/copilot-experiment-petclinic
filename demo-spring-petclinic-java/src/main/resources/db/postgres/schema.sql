@@ -65,3 +65,11 @@ CREATE TABLE IF NOT EXISTS roles (
   FOREIGN KEY (username) REFERENCES users (username),
   CONSTRAINT uni_username_role UNIQUE (role, username)
 );
+
+CREATE TABLE IF NOT EXISTS appointments (
+                                    appointment_date DATE,
+                                    appointment_time    TIME,
+                                    reason   TEXT,
+                                    pet_id   INT REFERENCES pets (id),
+                                    vet_id   INT NOT NULL REFERENCES vets (id)
+);
