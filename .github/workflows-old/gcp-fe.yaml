@@ -1,0 +1,14 @@
+name: GCP Deploy FE
+on: 
+  workflow_dispatch:    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./demo-spring-petclinic-angular/
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Build docker images    
+      run: docker build .

@@ -1,0 +1,23 @@
+name: GCP Deploy FE
+on: 
+  workflow_dispatch:    
+    inputs:
+      version:
+        options:
+        - v1
+        - v2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./demo-spring-petclinic-angular/
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Build docker images    
+      run: docker build . -t angular:${{ github.event.inputs.version }}
+    - name: Tag docker images    
+      run: docker tag angular:${{ github.event.inputs.version }} europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-fe/angular:${{ github.event.inputs.version }} 
+    - name: Push docker images    
+      run: docker push europe-west10-docker.pkg.dev/optimum-agent-453312-a2/petclinic-fe/angular:${{ github.event.inputs.version }} 
