@@ -45,6 +45,7 @@ public class ClinicServiceImpl implements ClinicService {
     private final VisitRepository visitRepository;
     private final SpecialtyRepository specialtyRepository;
     private final PetTypeRepository petTypeRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Autowired
     public ClinicServiceImpl(
@@ -53,13 +54,15 @@ public class ClinicServiceImpl implements ClinicService {
         OwnerRepository ownerRepository,
         VisitRepository visitRepository,
         SpecialtyRepository specialtyRepository,
-        PetTypeRepository petTypeRepository) {
+        PetTypeRepository petTypeRepository,
+        AppointmentRepository appointmentRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.specialtyRepository = specialtyRepository;
         this.petTypeRepository = petTypeRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
     @Override
@@ -206,6 +209,42 @@ public class ClinicServiceImpl implements ClinicService {
     public void saveVisit(Visit visit) throws DataAccessException {
         visitRepository.save(visit);
 
+    }
+
+    /* Appointment methods */
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAllAppointments() throws DataAccessException {
+        return appointmentRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findAppointmentsByVetId(int vetId) throws DataAccessException {
+        return appointmentRepository.findByVetId(vetId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Appointment findAppointmentById(int appointmentId) throws DataAccessException {
+        return appointmentRepository.findById(appointmentId);
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        var conflicts = appointmentRepository.findByVetIdAndDateTime(appointment.getVet().getId(), appointment.getDateTime());
+        if (!conflicts.isEmpty() && (appointment.getId() == null || conflicts.stream().anyMatch(a -> !a.getId().equals(appointment.getId())))) {
+            throw new IllegalArgumentException("Overlapping appointment for vet");
+        }
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.delete(appointment);
     }
 
     @Override

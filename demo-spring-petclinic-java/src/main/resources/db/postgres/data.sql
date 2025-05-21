@@ -52,6 +52,9 @@ INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2011-03-04', 'ra
 INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2009-06-04', 'neutered' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=3);
 INSERT INTO visits (pet_id, visit_date, description) SELECT 7, '2008-09-04', 'spayed' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=4);
 
+INSERT INTO appointments (vet_id, appointment_date, description) SELECT 1, '2013-01-05 10:00:00', 'Check-up' WHERE NOT EXISTS (SELECT * FROM appointments WHERE id=1);
+INSERT INTO appointments (vet_id, appointment_date, description) SELECT 2, '2013-01-06 11:00:00', 'Consultation' WHERE NOT EXISTS (SELECT * FROM appointments WHERE id=2);
+
 INSERT INTO users(username,password,enabled) SELECT 'admin','{noop}admin', true WHERE NOT EXISTS (SELECT * FROM users WHERE username='admin');
 
 INSERT INTO roles (username, role) SELECT 'admin', 'ROLE_OWNER_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=1);
