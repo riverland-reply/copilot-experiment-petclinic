@@ -56,9 +56,11 @@ CREATE TABLE IF NOT EXISTS visits (
 
 CREATE TABLE IF NOT EXISTS appointments (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
   vet_id INT(4) UNSIGNED NOT NULL,
   appointment_date DATETIME,
   description VARCHAR(255),
+
   FOREIGN KEY (vet_id) REFERENCES vets(id)
 ) engine=InnoDB;
 

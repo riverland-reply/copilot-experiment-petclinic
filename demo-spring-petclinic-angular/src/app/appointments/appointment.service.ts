@@ -46,6 +46,7 @@ export class AppointmentService {
     );
   }
 
+
   addAppointment(appointment: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(this.entityUrl, appointment).pipe(
       catchError(this.handlerError('addAppointment', appointment))

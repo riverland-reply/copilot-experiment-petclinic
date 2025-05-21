@@ -6,16 +6,19 @@ import java.time.LocalDateTime;
 
 /**
  * Simple entity representing an appointment with a vet.
+
  */
 @Entity
 @Table(name = "appointments")
 public class Appointment extends BaseEntity {
+
 
     @Column(name = "appointment_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
     @NotEmpty
     private String description;
+
 
     @ManyToOne
     @JoinColumn(name = "vet_id")
@@ -35,6 +38,7 @@ public class Appointment extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+
     }
 
     public Vet getVet() {

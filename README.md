@@ -1,17 +1,37 @@
-# petclinic FE
+## Running with Docker Compose
 
-cd .\demo-spring-petclinic-angular\
-docker build -t pet-fe . ; docker run -p 8080:8080 pet-fe 
+From the repository root you can start the entire application stack with:
 
-find it in: http://localhost:8080/petclinic/
+```bash
+docker compose up --build
+```
 
-# petclinic BE
+This will build the Angular frontend and start the backend together with a
+PostgreSQL database. Once the services are up you can reach the application at
+`http://localhost:8080/petclinic/` and the REST API at
+`http://localhost:9966/petclinic/api`.
 
-cd .\demo-spring-petclinic-java\
+The database is exposed on port `5433` if you want to connect to it directly.
+
+---
+
+The following steps describe how to build and run the containers manually if
+you prefer to run them separately.
+
+### petclinic FE
+
+```bash
+cd demo-spring-petclinic-angular
+docker build -t pet-fe .
+docker run -p 8080:8080 pet-fe
+```
+
+### petclinic BE
+
+```bash
+cd demo-spring-petclinic-java
 docker compose --profile postgres up --build
-
-access the DB from: localhost:5433
-
 mvn spring-boot:run
+```
 
-the apis will be exposed from: http://localhost:8081/petclinic/api
+The APIs will be exposed from: `http://localhost:9966/petclinic/api`

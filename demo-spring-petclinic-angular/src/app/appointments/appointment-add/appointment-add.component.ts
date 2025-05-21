@@ -5,11 +5,13 @@ import { AppointmentService } from '../appointment.service';
 import { VetService } from '../../vets/vet.service';
 import { Vet } from '../../vets/vet';
 
+
 @Component({
   selector: 'app-appointment-add',
   templateUrl: './appointment-add.component.html',
   styleUrls: ['./appointment-add.component.css']
 })
+
 export class AppointmentAddComponent implements OnInit {
   appointment: Appointment = {id: null, vetId: 0, dateTime: '', description: ''};
   errorMessage: string | undefined;
@@ -19,6 +21,7 @@ export class AppointmentAddComponent implements OnInit {
   ngOnInit() {
     this.vetService.getVets().subscribe(vs => this.vets = vs);
   }
+
 
   onSubmit(appointment: Appointment) {
     this.appointmentService.addAppointment(appointment).subscribe({

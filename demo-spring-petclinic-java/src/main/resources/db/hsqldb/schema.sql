@@ -68,11 +68,13 @@ CREATE INDEX visits_pet_id ON visits (pet_id);
 
 CREATE TABLE appointments (
   id INTEGER IDENTITY PRIMARY KEY,
+
   vet_id INTEGER NOT NULL,
   appointment_date TIMESTAMP,
   description VARCHAR(255)
 );
 ALTER TABLE appointments ADD CONSTRAINT fk_appointments_vets FOREIGN KEY (vet_id) REFERENCES vets (id);
+
 CREATE INDEX appointments_vet_id ON appointments (vet_id);
 
 CREATE  TABLE users (

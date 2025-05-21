@@ -15,6 +15,7 @@
           <select name="vet" class="form-control" required [(ngModel)]="appointment.vetId" #vet="ngModel">
             <option *ngFor="let v of vets" [value]="v.id">{{v.firstName}} {{v.lastName}}</option>
           </select>
+
         </div>
       </div>
       <div class="form-group has-feedback" [class.has-error]="description.invalid && description.dirty">

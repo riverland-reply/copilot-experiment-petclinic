@@ -8,6 +8,7 @@ const appointmentRoutes: Routes = [
   { path: 'appointments', component: AppointmentListComponent },
   { path: 'appointments/add', component: AppointmentAddComponent },
   { path: 'appointments/:id/edit', component: AppointmentEditComponent }
+
 ];
 
 @NgModule({

@@ -28,6 +28,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.time.LocalDateTime;
 
 /**
  * Mostly used as a facade for all Petclinic controllers
@@ -276,6 +277,35 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional(readOnly = true)
     public List<Specialty> findSpecialtiesByNameIn(Set<String> names) {
         return findEntityById(() -> specialtyRepository.findSpecialtiesByNameIn(names));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Appointment findAppointmentById(int appointmentId) throws DataAccessException {
+        return findEntityById(() -> appointmentRepository.findById(appointmentId));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Appointment> findUpcomingAppointments() throws DataAccessException {
+        return appointmentRepository.findUpcoming(LocalDateTime.now());
+    }
+
+    @Override
+    @Transactional
+    public void saveAppointment(Appointment appointment) throws DataAccessException {
+        Appointment existing = appointmentRepository.findByVetIdAndDateTime(
+            appointment.getVet().getId(), appointment.getDateTime());
+        if (existing != null && !existing.getId().equals(appointment.getId())) {
+            throw new IllegalStateException("Vet is already booked for this time");
+        }
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    @Transactional
+    public void deleteAppointment(Appointment appointment) throws DataAccessException {
+        appointmentRepository.delete(appointment);
     }
 
     private <T> T findEntityById(Supplier<T> supplier) {

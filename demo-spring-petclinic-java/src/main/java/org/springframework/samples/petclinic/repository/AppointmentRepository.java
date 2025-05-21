@@ -6,6 +6,7 @@ import org.springframework.samples.petclinic.model.Appointment;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+
 public interface AppointmentRepository {
 
     void save(Appointment appointment) throws DataAccessException;
@@ -19,4 +20,5 @@ public interface AppointmentRepository {
     void delete(Appointment appointment) throws DataAccessException;
 
     Collection<Appointment> findByVetIdAndDateTime(int vetId, LocalDateTime dateTime) throws DataAccessException;
+
 }

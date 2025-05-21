@@ -25,11 +25,13 @@ public class JpaAppointmentRepositoryImpl implements AppointmentRepository {
             em.persist(appointment);
         } else {
             em.merge(appointment);
+
         }
     }
 
     @Override
     public Appointment findById(int id) throws DataAccessException {
+
         return em.find(Appointment.class, id);
     }
 
@@ -37,16 +39,20 @@ public class JpaAppointmentRepositoryImpl implements AppointmentRepository {
     public Collection<Appointment> findByVetId(int vetId) throws DataAccessException {
         Query query = em.createQuery("SELECT a FROM Appointment a WHERE a.vet.id = :id");
         query.setParameter("id", vetId);
+
         return query.getResultList();
     }
 
     @Override
+
     public Collection<Appointment> findAll() throws DataAccessException {
         return em.createQuery("SELECT a FROM Appointment a", Appointment.class).getResultList();
+
     }
 
     @Override
     public void delete(Appointment appointment) throws DataAccessException {
+
         em.remove(em.contains(appointment) ? appointment : em.merge(appointment));
     }
 
@@ -56,5 +62,6 @@ public class JpaAppointmentRepositoryImpl implements AppointmentRepository {
         query.setParameter("id", vetId);
         query.setParameter("dt", dateTime);
         return query.getResultList();
+
     }
 }

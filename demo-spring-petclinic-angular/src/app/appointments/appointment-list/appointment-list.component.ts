@@ -3,6 +3,7 @@ import { Appointment } from '../appointment';
 import { AppointmentService } from '../appointment.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-appointment-list',
   templateUrl: './appointment-list.component.html',
@@ -14,6 +15,7 @@ export class AppointmentListComponent implements OnInit {
   vetId: number | null = null;
 
   constructor(private appointmentService: AppointmentService, private router: Router) {}
+
 
   ngOnInit() {
     this.appointmentService.getAppointments().subscribe({
