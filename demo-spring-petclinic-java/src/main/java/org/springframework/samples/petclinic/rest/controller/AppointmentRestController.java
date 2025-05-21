@@ -14,8 +14,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Collection;
 
 @RestController
-@CrossOrigin(exposedHeaders = "errors, content-type")
-@RequestMapping("api/appointments")
+@CrossOrigin(origins = "http://localhost:8080", exposedHeaders = "errors, content-type")
+@RequestMapping("/api/appointments")
 public class AppointmentRestController {
 
     private final ClinicService clinicService;
