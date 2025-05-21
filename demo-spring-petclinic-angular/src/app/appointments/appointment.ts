@@ -1,5 +1,7 @@
 export interface Appointment {
-  id: number;
-  date: string;
+  id: number | null;
+  vetId: number;
+  dateTime: string;
+
   description: string;
 }

@@ -71,7 +71,18 @@ public interface ClinicService {
 	Specialty findSpecialtyById(int specialtyId);
 	Collection<Specialty> findAllSpecialties() throws DataAccessException;
 	void saveSpecialty(Specialty specialty) throws DataAccessException;
-	void deleteSpecialty(Specialty specialty) throws DataAccessException;
+    void deleteSpecialty(Specialty specialty) throws DataAccessException;
 
     List<Specialty> findSpecialtiesByNameIn(Set<String> names) throws DataAccessException;
+
+    /* Appointment management */
+    Collection<Appointment> findAllAppointments() throws DataAccessException;
+
+    Collection<Appointment> findAppointmentsByVetId(int vetId) throws DataAccessException;
+
+    Appointment findAppointmentById(int appointmentId) throws DataAccessException;
+
+    void saveAppointment(Appointment appointment) throws DataAccessException;
+
+    void deleteAppointment(Appointment appointment) throws DataAccessException;
 }

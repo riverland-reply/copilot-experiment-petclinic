@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>Edit Appointment</h2>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="form-horizontal">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Date/Time</label>
+        <div class="col-sm-10">
+          <input name="dateTime" class="form-control" type="datetime-local" required [(ngModel)]="appointment.dateTime" #dateTime="ngModel">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Vet</label>
+        <div class="col-sm-10">
+          <select name="vet" class="form-control" required [(ngModel)]="appointment.vetId" #vet="ngModel">
+            <option *ngFor="let v of vets" [value]="v.id">{{v.firstName}} {{v.lastName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <input name="description" required class="form-control" [(ngModel)]="appointment.description" #description="ngModel">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-default" type="button" (click)="gotoList()">Back</button>
+          <button class="btn btn-default" type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -52,6 +52,9 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
+INSERT INTO appointments VALUES (1, 1, '2013-01-05 10:00:00', 'Check-up');
+INSERT INTO appointments VALUES (2, 2, '2013-01-06 11:00:00', 'Consultation');
+
 INSERT INTO users(username,password,enabled) VALUES ('admin','{noop}admin', true);
 
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_OWNER_ADMIN');

@@ -21,6 +21,32 @@ export class AppointmentService {
     );
   }
 
+  searchAppointments(vetId: number): Observable<Appointment[]> {
+    const url = `${this.entityUrl}/search?vetId=${vetId}`;
+    return this.http.get<Appointment[]>(url).pipe(
+      catchError(this.handlerError('searchAppointments', []))
+    );
+  }
+
+  getAppointment(id: number): Observable<Appointment> {
+    return this.http.get<Appointment>(`${this.entityUrl}/${id}`).pipe(
+      catchError(this.handlerError('getAppointment', {} as Appointment))
+    );
+  }
+
+  updateAppointment(id: number, appointment: Appointment): Observable<Appointment> {
+    return this.http.put<Appointment>(`${this.entityUrl}/${id}`, appointment).pipe(
+      catchError(this.handlerError('updateAppointment', appointment))
+    );
+  }
+
+  deleteAppointment(id: number): Observable<number> {
+    return this.http.delete<number>(`${this.entityUrl}/${id}`).pipe(
+      catchError(this.handlerError('deleteAppointment', 0))
+    );
+  }
+
+
   addAppointment(appointment: Appointment): Observable<Appointment> {
     return this.http.post<Appointment>(this.entityUrl, appointment).pipe(
       catchError(this.handlerError('addAppointment', appointment))

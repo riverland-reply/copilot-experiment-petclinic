@@ -2,11 +2,20 @@
   <div class="container xd-container">
     <h2>New Appointment</h2>
     <form (ngSubmit)="onSubmit(form.value)" #form="ngForm" class="form-horizontal">
-      <div class="form-group has-feedback" [class.has-error]="date.invalid && date.dirty">
-        <label class="col-sm-2 control-label">Date</label>
+      <div class="form-group has-feedback" [class.has-error]="dateTime.invalid && dateTime.dirty">
+        <label class="col-sm-2 control-label">Date/Time</label>
         <div class="col-sm-10">
-          <input name="date" required [(ngModel)]="appointment.date" #date="ngModel" class="form-control" type="date">
-          <span class="help-block" *ngIf="date.invalid && date.dirty">Date is required</span>
+          <input name="dateTime" required [(ngModel)]="appointment.dateTime" #dateTime="ngModel" class="form-control" type="datetime-local">
+          <span class="help-block" *ngIf="dateTime.invalid && dateTime.dirty">Date and time are required</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Vet</label>
+        <div class="col-sm-10">
+          <select name="vet" class="form-control" required [(ngModel)]="appointment.vetId" #vet="ngModel">
+            <option *ngFor="let v of vets" [value]="v.id">{{v.firstName}} {{v.lastName}}</option>
+          </select>
+
         </div>
       </div>
       <div class="form-group has-feedback" [class.has-error]="description.invalid && description.dirty">

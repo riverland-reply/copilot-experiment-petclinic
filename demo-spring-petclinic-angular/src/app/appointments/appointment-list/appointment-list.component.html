@@ -1,14 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <input type="number" class="form-control" placeholder="Vet id" [(ngModel)]="vetId">
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-default" (click)="search()">Search</button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-default" (click)="addAppointment()">Add</button>
+    </div>
+  </div>
+</div>
+
 <table class="table table-condensed" *ngIf="appointments && appointments.length">
   <thead>
   <tr>
-    <th>Date</th>
+    <th>Vet Id</th>
+    <th>Date/Time</th>
     <th>Description</th>
+    <th></th>
+
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let appointment of appointments">
-    <td>{{ appointment.date }}</td>
+    <td>{{ appointment.vetId }}</td>
+    <td>{{ appointment.dateTime }}</td>
     <td>{{ appointment.description }}</td>
+    <td>
+      <button class="btn btn-default" (click)="editAppointment(appointment)">Edit</button>
+      <button class="btn btn-default" (click)="deleteAppointment(appointment)">Delete</button>
+    </td>
+
   </tr>
   </tbody>
 </table>

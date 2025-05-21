@@ -56,11 +56,11 @@ CREATE TABLE IF NOT EXISTS visits (
 
 CREATE TABLE IF NOT EXISTS appointments (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  pet_id INT(4) UNSIGNED NOT NULL,
+
   vet_id INT(4) UNSIGNED NOT NULL,
-  date_time TIMESTAMP,
-  reason VARCHAR(255),
-  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  appointment_date DATETIME,
+  description VARCHAR(255),
+
   FOREIGN KEY (vet_id) REFERENCES vets(id)
 ) engine=InnoDB;
 

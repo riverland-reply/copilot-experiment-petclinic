@@ -22,35 +22,46 @@ public class JpaAppointmentRepositoryImpl implements AppointmentRepository {
     @Override
     public void save(Appointment appointment) throws DataAccessException {
         if (appointment.getId() == null) {
-            this.em.persist(appointment);
+            em.persist(appointment);
         } else {
-            this.em.merge(appointment);
+            em.merge(appointment);
+
         }
     }
 
     @Override
     public Appointment findById(int id) throws DataAccessException {
-        return this.em.find(Appointment.class, id);
+
+        return em.find(Appointment.class, id);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public Collection<Appointment> findUpcoming(LocalDateTime dateTime) throws DataAccessException {
-        Query query = this.em.createQuery("SELECT a FROM Appointment a WHERE a.dateTime >= :now ORDER BY a.dateTime");
-        query.setParameter("now", dateTime);
+    public Collection<Appointment> findByVetId(int vetId) throws DataAccessException {
+        Query query = em.createQuery("SELECT a FROM Appointment a WHERE a.vet.id = :id");
+        query.setParameter("id", vetId);
+
         return query.getResultList();
     }
 
     @Override
-    public Appointment findByVetIdAndDateTime(int vetId, LocalDateTime dateTime) throws DataAccessException {
-        Query query = this.em.createQuery("SELECT a FROM Appointment a WHERE a.vet.id = :vetId AND a.dateTime = :dt");
-        query.setParameter("vetId", vetId);
-        query.setParameter("dt", dateTime);
-        return (Appointment) query.getResultStream().findFirst().orElse(null);
+
+    public Collection<Appointment> findAll() throws DataAccessException {
+        return em.createQuery("SELECT a FROM Appointment a", Appointment.class).getResultList();
+
     }
 
     @Override
     public void delete(Appointment appointment) throws DataAccessException {
-        this.em.remove(this.em.contains(appointment) ? appointment : this.em.merge(appointment));
+
+        em.remove(em.contains(appointment) ? appointment : em.merge(appointment));
+    }
+
+    @Override
+    public Collection<Appointment> findByVetIdAndDateTime(int vetId, LocalDateTime dateTime) throws DataAccessException {
+        Query query = em.createQuery("SELECT a FROM Appointment a WHERE a.vet.id = :id AND a.dateTime = :dt");
+        query.setParameter("id", vetId);
+        query.setParameter("dt", dateTime);
+        return query.getResultList();
+
     }
 }

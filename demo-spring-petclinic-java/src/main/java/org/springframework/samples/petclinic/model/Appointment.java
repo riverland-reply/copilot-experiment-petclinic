@@ -1,24 +1,24 @@
 package org.springframework.samples.petclinic.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 /**
- * Simple domain object representing an appointment between a pet and a vet.
+ * Simple entity representing an appointment with a vet.
+
  */
 @Entity
 @Table(name = "appointments")
 public class Appointment extends BaseEntity {
 
-    @Column(name = "date_time")
+
+    @Column(name = "appointment_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
-    @Column(name = "reason")
-    private String reason;
+    @NotEmpty
+    private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
 
     @ManyToOne
     @JoinColumn(name = "vet_id")
@@ -32,20 +32,13 @@ public class Appointment extends BaseEntity {
         this.dateTime = dateTime;
     }
 
-    public String getReason() {
-        return reason;
+    public String getDescription() {
+        return description;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+    public void setDescription(String description) {
+        this.description = description;
 
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
     }
 
     public Vet getVet() {

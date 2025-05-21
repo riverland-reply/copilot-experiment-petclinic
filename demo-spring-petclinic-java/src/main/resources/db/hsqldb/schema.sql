@@ -2,6 +2,7 @@ DROP TABLE vet_specialties IF EXISTS;
 DROP TABLE vets IF EXISTS;
 DROP TABLE specialties IF EXISTS;
 DROP TABLE visits IF EXISTS;
+DROP TABLE appointments IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
@@ -67,13 +68,13 @@ CREATE INDEX visits_pet_id ON visits (pet_id);
 
 CREATE TABLE appointments (
   id INTEGER IDENTITY PRIMARY KEY,
-  pet_id INTEGER NOT NULL,
+
   vet_id INTEGER NOT NULL,
-  date_time TIMESTAMP,
-  reason VARCHAR(255)
+  appointment_date TIMESTAMP,
+  description VARCHAR(255)
 );
-ALTER TABLE appointments ADD CONSTRAINT fk_appointments_pet FOREIGN KEY (pet_id) REFERENCES pets (id);
-ALTER TABLE appointments ADD CONSTRAINT fk_appointments_vet FOREIGN KEY (vet_id) REFERENCES vets (id);
+ALTER TABLE appointments ADD CONSTRAINT fk_appointments_vets FOREIGN KEY (vet_id) REFERENCES vets (id);
+
 CREATE INDEX appointments_vet_id ON appointments (vet_id);
 
 CREATE  TABLE users (
