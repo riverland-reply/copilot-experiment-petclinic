@@ -65,6 +65,17 @@ CREATE TABLE visits (
 ALTER TABLE visits ADD CONSTRAINT fk_visits_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX visits_pet_id ON visits (pet_id);
 
+CREATE TABLE appointments (
+  id INTEGER IDENTITY PRIMARY KEY,
+  pet_id INTEGER NOT NULL,
+  vet_id INTEGER NOT NULL,
+  date_time TIMESTAMP,
+  reason VARCHAR(255)
+);
+ALTER TABLE appointments ADD CONSTRAINT fk_appointments_pet FOREIGN KEY (pet_id) REFERENCES pets (id);
+ALTER TABLE appointments ADD CONSTRAINT fk_appointments_vet FOREIGN KEY (vet_id) REFERENCES vets (id);
+CREATE INDEX appointments_vet_id ON appointments (vet_id);
+
 CREATE  TABLE users (
   username    VARCHAR(20) NOT NULL ,
   password    VARCHAR(20) NOT NULL ,
