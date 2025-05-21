@@ -26,6 +26,7 @@ import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Specialty;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
+import org.springframework.samples.petclinic.model.Appointment;
 
 /**
  * Mostly used as a facade so all controllers have a single point of entry
@@ -42,9 +43,15 @@ public interface ClinicService {
 
 	Collection<Visit> findVisitsByPetId(int petId);
 	Visit findVisitById(int visitId) throws DataAccessException;
-	Collection<Visit> findAllVisits() throws DataAccessException;
-	void saveVisit(Visit visit) throws DataAccessException;
-	void deleteVisit(Visit visit) throws DataAccessException;
+    Collection<Visit> findAllVisits() throws DataAccessException;
+    void saveVisit(Visit visit) throws DataAccessException;
+    void deleteVisit(Visit visit) throws DataAccessException;
+
+    /* Appointment management */
+    Appointment findAppointmentById(int appointmentId) throws DataAccessException;
+    Collection<Appointment> findUpcomingAppointments() throws DataAccessException;
+    void saveAppointment(Appointment appointment) throws DataAccessException;
+    void deleteAppointment(Appointment appointment) throws DataAccessException;
 	Vet findVetById(int id) throws DataAccessException;
 	Collection<Vet> findVets() throws DataAccessException;
 	Collection<Vet> findAllVets() throws DataAccessException;
