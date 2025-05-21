@@ -1,0 +1,15 @@
+<table class="table table-condensed" *ngIf="appointments && appointments.length">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let appointment of appointments">
+    <td>{{ appointment.date }}</td>
+    <td>{{ appointment.description }}</td>
+  </tr>
+  </tbody>
+</table>
+<p *ngIf="appointments.length === 0">No appointments found.</p>
